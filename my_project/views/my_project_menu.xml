@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="my_project_info_menu_root" name="My Project">
+        <menuitem id="my_project_info_menu_first_level_menu" name="Projects">
+            <menuitem id="my_project_info_menu_action" action="my_project_info_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>
