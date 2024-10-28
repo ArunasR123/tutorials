@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="estate_property_offer_action" model="ir.actions.act_window">
+        <field name="name">Offers</field>
+        <field name="res_model">estate.property.offer</field>
+        <field name="view_mode">list</field>
+        <field name="domain">['property_type_id','=', active_id]</field>
+    </record>
+
+    <record id="estate_property_offer_view_list" model="ir.ui.view">
+        <field name="name">estate.property.offer.list</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <list editable="top" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'">
+                <field name="price"/>
+                <field name="partner_id" string="Salesperson"/>
+                <field name="validity" string="Validity (Days)"/>
+                <field name="property_type_id"/>
+                <field name="date_deadline" string="Deadline"/>
+                <button name="accept_offer" type="object" string="Accept" icon="fa-check"
+                        invisible="(status == 'accepted' or status == 'refused')"/>
+                <button name="refuse_offer" type="object" string="Refuse" icon="oi-close"
+                        invisible="(status == 'accepted' or status == 'refused')"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="estate_property_offer_view_form" model="ir.ui.view">
+        <field name="name">estate.property.offer.form</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <form string="Properties" create="True">
+                <sheet>
+                    <group>
+                        <field name="price"/>
+                        <field name="partner_id" string="Salesperson"/>
+                        <field name="validity" string="Validity (Days)"/>
+                        <field name="date_deadline" string="Deadline"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
